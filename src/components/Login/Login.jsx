@@ -3,19 +3,47 @@ import { Background, Contenedor, Input, TextLeft, TextDecoration, Boton, Iconos,
 import { FaFacebookF } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc'
 import { Box, Grid } from '@material-ui/core'
+import {useForm} from '../../hooks/useForm'
+import {useDispatch} from 'react-redux'
+import { login } from '../../actions/auth';
 
 const Login = () => {
+
+    const dispatch = useDispatch();
+   const [formValues, handleInputChange] = useForm({
+       email:'',
+       password:''
+   })
+
+   const {email, password} = formValues;
+
+   const handleLogin = (e) => {
+      e.preventDefault();
+      dispatch(login(122,'Gustavo'))
+   }
+
+
     return (
         <Background>
             <Contenedor className="col-md-4">
-                <form>
+                <form onSubmit={handleLogin}>
                     <div className="form-group text-center">
                         <h5>Iniciar Sesión</h5>
                         <div className="form-group mx-sm-4 my-3">
-                            <Input type="text" className="form-control" id="" placeholder="Correo electrónico" />
+                            <Input type="text" className="form-control"
+                             id="" 
+                             placeholder="Correo electrónico"
+                             name='email'
+                             value={email}
+                             onChange={handleInputChange} />
                         </div>
                         <div className="form-group mx-sm-4 my-3">
-                            <Input type="password" className="form-control" id="" placeholder="Contraseña" />
+                            <Input type="password" className="form-control"
+                             id=""
+                             placeholder="Contraseña"
+                             name='password'
+                             value={password}
+                             onChange={handleInputChange} />
                         </div>
                         <div className="form-group mx-sm-4 ms-1">
                             <Boton type="submit" className="btn  my-sm-2">Ingresar</Boton>
