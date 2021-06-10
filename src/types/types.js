@@ -1,4 +1,8 @@
 export const types = {
     login: "LOGIN",
-    logout:"LOGOUT"
+    logout:"LOGOUT",
+
+    uiSetError:"SET ERROR",
+    uiRemoveError: "REMOVE ERROR"
+
 }
