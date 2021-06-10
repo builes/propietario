@@ -1,0 +1,10 @@
+{
+    "pacientes": [
+        {"id": 1, "nombres": "pepito perez", "edad": 29},
+        {"id": 2, "nombres": "pepita parez", "edad": 35}
+    ],
+    "diagnosticos": [
+        {"id": 1, "imc": "menor a 18.5", "situacion": "bajo peso"},
+        {"id": 2, "imc": "mayor a 18.5", "situacion": "peso normal"}
+    ]
+}
