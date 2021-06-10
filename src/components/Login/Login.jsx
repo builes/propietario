@@ -5,12 +5,13 @@ import { FcGoogle } from 'react-icons/fc'
 import { Box, Grid } from '@material-ui/core'
 import {useForm} from '../../hooks/useForm'
 import {useDispatch} from 'react-redux'
-import { login } from '../../actions/auth';
+import { login, startGoogleLogin, startFacebookLogin, startLoginEmailPassword } from '../../actions/auth';
+
 
 const Login = () => {
 
     const dispatch = useDispatch();
-   const [formValues, handleInputChange] = useForm({
+   const [formValues, handleInputChange, reset] = useForm({
        email:'',
        password:''
    })
@@ -19,9 +20,17 @@ const Login = () => {
 
    const handleLogin = (e) => {
       e.preventDefault();
-      dispatch(login(122,'Gustavo'))
+      dispatch(startLoginEmailPassword(email,password))
+      reset()
+   }
+ 
+   const startGoogle = () =>{
+            dispatch(startGoogleLogin());
    }
 
+   const startFacebook = () =>{
+       dispatch(startFacebookLogin());
+   }
 
     return (
         <Background>
@@ -62,10 +71,10 @@ const Login = () => {
 
                         <Iconos>
                             <Facebook className="form-group ">
-                               <button> <FaFacebookF fontSize="25px"/></button>
+                               <button onClick={startFacebook}> <FaFacebookF fontSize="25px"/></button>
                             </Facebook>
                             <div className="form-group ">
-                               <button type="submit"><FcGoogle fontSize="30px"/></button> 
+                               <button onClick={startGoogle}><FcGoogle fontSize="30px"/></button> 
                             </div>
                         </Iconos>
 
