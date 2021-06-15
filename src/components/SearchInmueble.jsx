@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchPropiedad() {
+export default function SearchInmueble() {
   const classes = useStyles();
 
   return (

@@ -2,7 +2,7 @@ import { Box, Button, Grid, makeStyles, Typography } from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
 
-import SearchPropiedad from "./SearchPropiedad";
+import SearchInmueble from "./SearchInmueble";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,7 +38,7 @@ export default function Inicio() {
           >
             Arrienda sin salir de tu casa
           </Typography>
-          <SearchPropiedad />
+          <SearchInmueble />
           <Button style={{ marginTop: "1.2em" }}>Busqueda avanzada</Button>
           <Link to="/">
             <Typography className={classes.text}>

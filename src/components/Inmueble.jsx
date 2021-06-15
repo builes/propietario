@@ -13,6 +13,8 @@ import { useParams } from "react-router";
 import Divider from "@material-ui/core/Divider";
 import Carousel from "react-elastic-carousel";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
+import SingleBed from "@material-ui/icons/SingleBed";
+import DriveEtaOutlinedIcon from "@material-ui/icons/DriveEtaOutlined";
 
 const useStyles = makeStyles((theme) => ({
   text: {
@@ -46,16 +48,19 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 10,
   },
   divFlex: {
-    display: "flex",
-    width: "30%",
+    display: "grid",
+    gridTemplateColumns: "50% 50%",
+    width: "65%",
     justifyContent: "space-between",
     alignItems: "center",
   },
   divFlexT: {
     display: "flex",
-
     justifyContent: "space-between",
     alignItems: "center",
+  },
+  subtitle: {
+    fontSize: "1.5em",
   },
 }));
 
@@ -122,8 +127,17 @@ export default function Inmueble() {
             variant={"h5"}
             className={classes.cardInnerMargin}
           >
-            ${Intl.NumberFormat("de-DE").format(inmueble.precio)}
+            {inmueble.direccion}
           </Typography>
+          {inmueble.unidad && (
+            <Typography
+              align="justify"
+              variant={"h5"}
+              className={classes.cardInnerMargin}
+            >
+              {inmueble.unidad}
+            </Typography>
+          )}
           <Button className={classes.cardInnerMargin} variant="contained">
             Agendar visita
           </Button>
@@ -162,20 +176,44 @@ export default function Inmueble() {
             <Typography
               gutterBottom
               variant="subtitle2"
-              style={{ alignSelf: "center" }}
-              className={classes.divFlexT}
+              className={(classes.divFlexT, classes.subtitle)}
             >
-              <HomeOutlinedIcon />
+              <HomeOutlinedIcon fontSize="large" />
               {inmueble.area}m<sup>2</sup>
             </Typography>
             <Typography
               gutterBottom
-              variant="subtitle2"
-              style={{ alignSelf: "center" }}
-              className={classes.divFlexT}
+              variant="subtitle1"
+              className={(classes.divFlexT, classes.subtitle)}
             >
-              <HomeOutlinedIcon />
-              {inmueble.area}m<sup>2</sup>
+              <SingleBed fontSize="large" />
+              {inmueble.habitaciones}{" "}
+              {inmueble.habitaciones > 1 ? "habitaciones" : "habitacion"}
+            </Typography>
+          </div>
+          <div className={classes.divFlex}>
+            <Typography
+              variant="subtitle2"
+              className={(classes.divFlexT, classes.subtitle)}
+            >
+              <span
+                className="material-icons-outlined"
+                style={{
+                  fontSize: "1.5em",
+                  height: "100% !important",
+                }}
+              >
+                shower
+              </span>
+              {inmueble.banos} {inmueble.banos > 1 ? "baños" : "baño"}
+            </Typography>
+            <Typography
+              gutterBottom
+              variant="subtitle1"
+              className={(classes.divFlexT, classes.subtitle)}
+            >
+              <DriveEtaOutlinedIcon fontSize="large" />
+              {inmueble.parqueadero}
             </Typography>
           </div>
         </Grid>
