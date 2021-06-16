@@ -89,11 +89,6 @@ const Register = () => {
                             {formik.errors.password2 ? <div>{formik.errors.password2}</div> : null}
                         </div>
                         <div className="form-group mx-sm-4 ms-1">
-                            <Boton type="submit" className="btn  my-sm-2"
-                                onClick={formik.handleReset}>Borrar</Boton>
-                        </div>
-
-                        <div className="form-group mx-sm-4 ms-1">
                             <Boton type="submit" className="btn  my-sm-2">Ingresar</Boton>
                         </div>
 
