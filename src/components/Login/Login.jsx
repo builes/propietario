@@ -4,23 +4,26 @@ import { FaFacebookF } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc'
 import { Box, Grid } from '@material-ui/core'
 import {useForm} from '../../hooks/useForm'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import { login, startGoogleLogin, startFacebookLogin, startLoginEmailPassword } from '../../actions/auth';
 
 
 const Login = () => {
 
-    const dispatch = useDispatch();
+   const dispatch = useDispatch();
    const [formValues, handleInputChange, reset] = useForm({
        email:'',
        password:''
    })
+
+   const loading = useSelector(state => state.ui)
 
    const {email, password} = formValues;
 
    const handleLogin = (e) => {
       e.preventDefault();
       dispatch(startLoginEmailPassword(email,password))
+      console.log(email,password)
       reset()
    }
  
@@ -55,7 +58,9 @@ const Login = () => {
                              onChange={handleInputChange} />
                         </div>
                         <div className="form-group mx-sm-4 ms-1">
-                            <Boton type="submit" className="btn  my-sm-2">Ingresar</Boton>
+                            <Boton type="submit"
+                             className="btn  my-sm-2"
+                             >Ingresar</Boton>
                         </div>
 
 
