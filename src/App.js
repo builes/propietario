@@ -1,8 +1,10 @@
+// import Login from "./components/Login/Login";
+// import Register from "./components/Register/Register";
 import AppRouter from "./routers/AppRouter";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <AppRouter />
     </div>
   );

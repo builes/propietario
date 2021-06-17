@@ -1,13 +1,36 @@
 import React from 'react'
 import { Background, Contenedor, Input, TextLeft, TextDecoration, Boton, Iconos, Facebook } from '../../styles/LoginRegister'
-import { FaFacebookF } from 'react-icons/fa';
-import { FcGoogle } from 'react-icons/fc'
 import { useForm } from '../../hooks/useForm'
-import validator from 'validator';
-import { useDispatch, useSelector } from 'react-redux'
-import { removeError, setError } from '../../actions/uiError';
+import { useDispatch } from 'react-redux'
+import { startRegisterWithEmailPasswordName } from '../../actions/auth';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 const Register = () => {
+
+    const formik = useFormik({
+        initialValues: {
+            name: '',
+            email: '',
+            password: '',
+            password2: ''
+        },
+        validationSchema: Yup.object({
+            name: Yup.string()
+                .max(15, 'Must be 15 characters or less')
+                .min(1, 'estructura no valida')
+                .required('Required'),
+            email: Yup.string().email('Invalid email address').required('Required'),
+            password: Yup.string()
+                .required('campo obligatorio'),
+            password2: Yup.string()
+                .required('campo obligatorio')
+                .oneOf([Yup.ref('password')], 'las contrasenas no coinciden')
+        }),
+        onSubmit: values => {
+            dispatch(startRegisterWithEmailPasswordName(values.email, values.password, values.name))
+        },
+    });
 
     const dispatch = useDispatch();
     const [formValues, handleInputChange] = useForm({
@@ -19,80 +42,51 @@ const Register = () => {
 
     const { name, email, password, password2 } = formValues;
 
-    const { msjError } = useSelector(state => state.ui)
-
-
-    const formValid = () => {
-        if (name.trim().length === 0) {
-            dispatch(setError('Nombre requerido'))
-            return false
-        } else if (!validator.isEmail(email)) {
-            dispatch(setError('Email requerido'))
-            return false
-        } else if (password < 5) {
-            dispatch(setError('La contraseña debe ser mayor de 5 caracteres'))
-            return false
-        } else if (password !== password2) {
-            dispatch(setError("Las contraseñas deben coincidir"))
-            return false
-        }
-        dispatch(removeError(''))
-        return true;
-    }
-
-    const handleRegister = (e) => {
-        e.preventDefault();
-        formValid();
-    }
 
     return (
         <Background>
             <Contenedor className="col-md-4">
-                <form onSubmit={handleRegister}>
+                <form onSubmit={formik.handleSubmit}>
 
-                   
+
 
                     <div className="form-group text-center">
                         <h5>Registro</h5>
-                        {
-                        msjError &&
-                        (
-                            <div class="alert alert-danger" role="alert">
-                                {msjError}
-                            </div>
-                        )
-                    }
                         <div className="form-group mx-sm-4 my-3">
                             <Input type="text" className="form-control"
                                 id=""
                                 placeholder="Nombre completo "
                                 name='name'
-                                value={name}
-                                onChange={handleInputChange} />
+                                value={formik.values.name}
+                                onChange={formik.handleChange} />
+                            {formik.errors.name ? <div>{formik.errors.name}</div> : null}
                         </div>
                         <div className="form-group mx-sm-4 my-3">
                             <Input type="email" className="form-control"
                                 id=""
                                 placeholder="Correo electrónico"
                                 name='email'
-                                value={email}
-                                onChange={handleInputChange} />
+                                value={formik.values.email}
+                                onChange={formik.handleChange} />
+                            {formik.errors.email ? <div>{formik.errors.email}</div> : null}
                         </div>
                         <div className="form-group mx-sm-4 my-3">
                             <Input type="password" className="form-control"
                                 id=""
                                 placeholder="Contraseña"
                                 name='password'
-                                value={password}
-                                onChange={handleInputChange} />
+                                value={formik.values.password}
+                                onChange={formik.handleChange} />
+                            {formik.errors.password ? <div>{formik.errors.password}</div> : null}
                         </div>
                         <div className="form-group mx-sm-4 my-3">
                             <Input type="password" className="form-control"
                                 id=""
                                 placeholder="Confirmar contraseña"
                                 name='password2'
-                                value={password2}
-                                onChange={handleInputChange} />
+                                value={formik.values.password2}
+                                onChange={formik.handleChange} />
+                            {formik.errors.password2 ? <div>{formik.errors.password2}</div> : null}
                         </div>
                         <div className="form-group mx-sm-4 ms-1">
                             <Boton type="submit" className="btn  my-sm-2">Ingresar</Boton>

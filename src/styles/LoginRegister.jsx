@@ -64,6 +64,8 @@ export const Iconos = styled.div`
     align-items: center;
     margin: 3px!important;
     text-align: -webkit-center;
+    border:none;
+    background-color: transparent;
 `
 
 export const Facebook = styled.div`

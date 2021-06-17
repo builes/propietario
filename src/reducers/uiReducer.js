@@ -13,10 +13,23 @@ export const registro = (state = initialState, action) => {
                 ...state,
                 msjError: action.payload
             }
+
         case types.uiRemoveError:
             return {
                 ...state,
                 msjError: null
+            }
+
+        case types.uiStartLoading:
+            return {
+                ...state,
+                loading: true
+            }
+            
+        case types.uiFinishLoading:
+            return {
+                ...state,
+                loading: false
             }
 
 

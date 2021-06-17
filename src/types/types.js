@@ -3,6 +3,11 @@ export const types = {
     logout:"LOGOUT",
 
     uiSetError:"SET ERROR",
-    uiRemoveError: "REMOVE ERROR"
+    uiRemoveError: "REMOVE ERROR",
+
+    uiStartLoading: "START LOADING",
+    uiFinishLoading: "Finish LOADING"
+
+    
 
 }
