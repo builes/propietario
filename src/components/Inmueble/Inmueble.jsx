@@ -4,6 +4,7 @@ import {
   Card,
   CardMedia,
   Grid,
+  IconButton,
   makeStyles,
   Typography,
 } from "@material-ui/core";
@@ -19,6 +20,7 @@ import Videos from "../Videos/Videos";
 import Maps from "../Maps/Maps";
 import { store } from "../../firebase/firebaseFirestore";
 import planos from "./plano.jpg";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const useStyles = makeStyles((theme) => ({
   media: {
@@ -92,6 +94,7 @@ export default function Inmueble() {
   const [photos, setPhotos] = useState([]);
   const [lugaresCercanos, setLugaresCercanos] = useState([]);
   const [opcion, setOpcion] = useState("fotos");
+  const [color, setColor] = useState(false);
 
   // useEffect(() => {
   //   async function getInmueble() {
@@ -149,6 +152,25 @@ export default function Inmueble() {
       </Grid>
       <Grid item xs={7} style={{ position: "relative" }}>
         <Card className={classes.cardAbsolute}>
+          <div>
+            {color ? (
+              <IconButton aria-label="add to favorites">
+                <FavoriteIcon
+                  id="favorite"
+                  style={{ fontSize: "40px", color: "#ffa726" }}
+                  onClick={() => setColor(!color)}
+                />
+              </IconButton>
+            ) : (
+              <IconButton aria-label="add to favorites">
+                <FavoriteIcon
+                  id="favorite"
+                  style={{ fontSize: "40px" }}
+                  onClick={() => setColor(!color)}
+                />
+              </IconButton>
+            )}
+          </div>
           <Button
             className={classes.cardInnerMargin}
             size="large"
