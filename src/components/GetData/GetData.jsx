@@ -58,7 +58,7 @@ export default function GetData() {
             barrio={inmueble.barrio}
             area={inmueble.area}
             habitaciones={inmueble.habitaciones}
-            banos={inmueble.banos}
+            baños={inmueble.baños}
             precio={inmueble.precio}
             photo={inmueble.photos[1]}
             tipoInmueble={inmueble.tipoInmueble}

@@ -65,7 +65,7 @@ export default function Inmuebles({
   barrio,
   area,
   habitaciones,
-  banos,
+  baños,
   precio,
   photo,
   tipoInmueble,
@@ -116,7 +116,7 @@ export default function Inmuebles({
               component="h2"
             >
               <span className="material-icons-outlined">shower</span>
-              {banos}baños
+              {baños}baños
             </Typography>
           </div>
           <Typography gutterBottom variant="h5" component="h2">

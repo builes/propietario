@@ -89,7 +89,6 @@ export default function Inmueble() {
   const [inmueble, setInmueble] = useState([]);
   const [photos, setPhotos] = useState([]);
   const [opcion, setOpcion] = useState("fotos");
-  const [inmuebles, setInmuebles] = useState([]);
 
   // useEffect(() => {
   //   async function getInmueble() {
@@ -108,11 +107,12 @@ export default function Inmueble() {
     const getPropiedades = async () => {
       //Asi consultamos los datos que tengamos en la collecion agenda
       //docs seria la constante con los datos de la coleccion
-      const { docs } = await store.collection("propiedades").get();
-      //console.log(docs);
-      const newArray = docs.map((item) => ({ id: item.id, ...item.data() }));
-      console.log(newArray);
-      setInmuebles(newArray);
+      const docs = await (
+        await store.collection("propiedades").doc(id).get()
+      ).data();
+      console.log(docs);
+      setInmueble(docs);
+      setPhotos(docs.photos);
     };
     getPropiedades();
   }, []);
