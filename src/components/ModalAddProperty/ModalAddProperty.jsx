@@ -14,6 +14,7 @@ import {
   TextField,
 } from "@material-ui/core";
 import { store } from "../../firebase/firebaseFirestore";
+import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -253,11 +254,7 @@ export default function TransitionsModal() {
         .collection("propiedades")
         .add(propiedad);
       //Asi hacemos que cada que ingresemos un usuario nuevo se muetsre en la lista
-      // const { docs } = await store.collection("agenda").get();
-      // const newArray = docs.map((item) => ({ id: item.id, ...item.data() }));
-      // setUsuarios1(newArray);
-      //
-      console.log("tarea anadida");
+      alert("Inmueble agregado ");
     } catch (error) {
       console.log(error);
     }
@@ -450,36 +447,42 @@ export default function TransitionsModal() {
                   <TextField
                     label="foto 1"
                     style={{ width: "30%" }}
-                    onChange={(e) => setFotos([...fotos, e.target.value])}
+                    onBlur={(e) => setFotos([...fotos, e.target.value])}
                   />
                   <TextField
                     label="foto 2"
                     style={{ width: "30%" }}
-                    onChange={(e) => setFotos([...fotos, e.target.value])}
+                    onBlur={(e) => setFotos([...fotos, e.target.value])}
                   />
                   <TextField
                     label="foto 3"
                     style={{ width: "30%" }}
-                    onChange={(e) => setFotos([...fotos, e.target.value])}
+                    onBlur={(e) => setFotos([...fotos, e.target.value])}
                   />
                 </div>
                 <div>
                   <TextField
                     label="foto 4"
                     style={{ width: "30%" }}
-                    onChange={(e) => setFotos([...fotos, e.target.value])}
+                    onBlur={(e) => setFotos([...fotos, e.target.value])}
                   />
                   <TextField
                     label="foto 5"
                     style={{ width: "30%" }}
-                    onChange={(e) => setFotos([...fotos, e.target.value])}
+                    onBlur={(e) => setFotos([...fotos, e.target.value])}
                   />
                   <TextField
                     label="foto 6"
                     style={{ width: "30%" }}
-                    onChange={(e) => setFotos([...fotos, e.target.value])}
+                    onBlur={(e) => setFotos([...fotos, e.target.value])}
                   />
                 </div>
+                <TextareaAutosize
+                  aria-label="minimum height"
+                  rowsMin={4}
+                  placeholder="Minimum 3 rows"
+                  style={{ width: "94%", marginBottom: 10 }}
+                />
                 <Button
                   type="submit"
                   size="large"

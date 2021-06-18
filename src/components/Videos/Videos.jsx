@@ -9,7 +9,7 @@ import { ClassNames } from "@emotion/react";
 const useStyles = makeStyles((theme) => ({
   media: {
     width: "100vw",
-
+    height: "40%",
     display: "flex",
     justifyContent: "center",
   },

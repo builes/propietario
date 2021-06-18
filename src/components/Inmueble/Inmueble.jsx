@@ -18,10 +18,12 @@ import PetsIcon from "@material-ui/icons/Pets";
 import Videos from "../Videos/Videos";
 import Maps from "../Maps/Maps";
 import { store } from "../../firebase/firebaseFirestore";
+import planos from "./plano.jpg";
 
 const useStyles = makeStyles((theme) => ({
   media: {
-    width: "100vw",
+    width: "50vw",
+    margin: "auto",
   },
   allText: {
     textAlign: "justify",
@@ -88,6 +90,7 @@ export default function Inmueble() {
 
   const [inmueble, setInmueble] = useState([]);
   const [photos, setPhotos] = useState([]);
+  const [lugaresCercanos, setLugaresCercanos] = useState([]);
   const [opcion, setOpcion] = useState("fotos");
 
   // useEffect(() => {
@@ -113,6 +116,7 @@ export default function Inmueble() {
       console.log(docs);
       setInmueble(docs);
       setPhotos(docs.photos);
+      setLugaresCercanos(docs.lugaresCercanos);
     };
     getPropiedades();
   }, []);
@@ -132,13 +136,25 @@ export default function Inmueble() {
           </Carousel>
         ) : opcion === "video" ? (
           <Videos />
-        ) : (
+        ) : opcion === "mapa" ? (
           <Maps />
+        ) : (
+          <CardMedia
+            className={classes.media}
+            component="img"
+            image={planos}
+            width="100px"
+          />
         )}
       </Grid>
       <Grid item xs={7} style={{ position: "relative" }}>
         <Card className={classes.cardAbsolute}>
-          <Button className={classes.cardInnerMargin} variant="contained">
+          <Button
+            className={classes.cardInnerMargin}
+            size="large"
+            variant="contained"
+            color="primary"
+          >
             Agendar visita
           </Button>
         </Card>
@@ -149,7 +165,6 @@ export default function Inmueble() {
                 className={classes.botones}
                 onClick={() => {
                   setOpcion("fotos");
-                  console.log(opcion);
                 }}
               >
                 Fotos
@@ -158,7 +173,6 @@ export default function Inmueble() {
                 className={classes.botones}
                 onClick={() => {
                   setOpcion("video");
-                  console.log(opcion);
                 }}
               >
                 Video
@@ -166,8 +180,7 @@ export default function Inmueble() {
               <Button
                 className={classes.botones}
                 onClick={() => {
-                  setOpcion("video");
-                  console.log(opcion);
+                  setOpcion("planos");
                 }}
               >
                 Planos
@@ -176,7 +189,6 @@ export default function Inmueble() {
                 className={classes.botones}
                 onClick={() => {
                   setOpcion("mapa");
-                  console.log(opcion);
                 }}
               >
                 Mapa
@@ -257,6 +269,12 @@ export default function Inmueble() {
               <PetsIcon />
               {inmueble.pets}
             </Typography>
+          </div>
+          <div>
+            <Typography variant="h4">Lugares Cercanos</Typography>
+            {lugaresCercanos.map((item) => (
+              <Typography variant="h6">{item}</Typography>
+            ))}
           </div>
           <div>
             <Typography variant="subtitle" align="center">

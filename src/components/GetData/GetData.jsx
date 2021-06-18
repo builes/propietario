@@ -46,25 +46,29 @@ export default function GetData() {
   }, []);
 
   return (
-    <>
-      <Inicio />
-      <Typography variant="h4">Ultimas publicaciones en arriendo</Typography>
-      <Carousel breakPoints={breakPoints}>
-        {inmuebles.map((inmueble) => (
-          <Inmuebles
-            key={inmueble.id}
-            id={inmueble.id}
-            ciudad={inmueble.ciudad}
-            barrio={inmueble.barrio}
-            area={inmueble.area}
-            habitaciones={inmueble.habitaciones}
-            baños={inmueble.baños}
-            precio={inmueble.precio}
-            photo={inmueble.photos[1]}
-            tipoInmueble={inmueble.tipoInmueble}
-          />
-        ))}
-      </Carousel>
-    </>
+    <Grid container container direction="row" justify="center">
+      <Grid item xs={11}>
+        <Inicio />
+        <Typography variant="h4" style={{ textAlign: "center" }}>
+          Ultimas publicaciones en arriendo
+        </Typography>
+        <Carousel breakPoints={breakPoints}>
+          {inmuebles.map((inmueble) => (
+            <Inmuebles
+              key={inmueble.id}
+              id={inmueble.id}
+              ciudad={inmueble.ciudad}
+              barrio={inmueble.barrio}
+              area={inmueble.area}
+              habitaciones={inmueble.habitaciones}
+              baños={inmueble.baños}
+              precio={inmueble.precio}
+              photo={inmueble.photos[1]}
+              tipoInmueble={inmueble.tipoInmueble}
+            />
+          ))}
+        </Carousel>
+      </Grid>
+    </Grid>
   );
 }
