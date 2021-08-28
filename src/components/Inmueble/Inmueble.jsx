@@ -21,6 +21,7 @@ import Maps from "../Maps/Maps";
 import { store } from "../../firebase/firebaseFirestore";
 import planos from "./plano.jpg";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   media: {
@@ -178,6 +179,42 @@ export default function Inmueble() {
             color="primary"
           >
             Agendar visita
+          </Button>
+          <Button
+            className={classes.cardInnerMargin}
+            size="large"
+            variant="contained"
+            color="primary"
+          >
+            <Link
+              to="/pagoArriendo/"
+              style={{
+                textDecoration: "none",
+                color: "white",
+                paddingLeft: 21,
+                paddingRight: 21,
+              }}
+            >
+              Arrendar
+            </Link>
+          </Button>
+          <Button
+            className={classes.cardInnerMargin}
+            size="large"
+            variant="contained"
+            color="primary"
+          >
+            <Link
+              to="/pagoArriendo/"
+              style={{
+                textDecoration: "none",
+                color: "white",
+                paddingLeft: 20,
+                paddingRight: 20,
+              }}
+            >
+              Compartir
+            </Link>
           </Button>
         </Card>
         <Grid item xs={12}>

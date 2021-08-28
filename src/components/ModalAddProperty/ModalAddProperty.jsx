@@ -445,42 +445,17 @@ export default function TransitionsModal() {
                 </div>
                 <div>
                   <TextField
-                    label="foto 1"
-                    style={{ width: "30%" }}
-                    onBlur={(e) => setFotos([...fotos, e.target.value])}
-                  />
-                  <TextField
-                    label="foto 2"
-                    style={{ width: "30%" }}
-                    onBlur={(e) => setFotos([...fotos, e.target.value])}
-                  />
-                  <TextField
-                    label="foto 3"
-                    style={{ width: "30%" }}
-                    onBlur={(e) => setFotos([...fotos, e.target.value])}
-                  />
-                </div>
-                <div>
-                  <TextField
-                    label="foto 4"
-                    style={{ width: "30%" }}
-                    onBlur={(e) => setFotos([...fotos, e.target.value])}
-                  />
-                  <TextField
-                    label="foto 5"
-                    style={{ width: "30%" }}
-                    onBlur={(e) => setFotos([...fotos, e.target.value])}
-                  />
-                  <TextField
-                    label="foto 6"
-                    style={{ width: "30%" }}
-                    onBlur={(e) => setFotos([...fotos, e.target.value])}
+                    error={errorBaños.active}
+                    helperText={"Agrega las fotos del inmueble"}
+                    style={{ width: "26%" }}
+                    type="file"
+                    name="asdasd"
                   />
                 </div>
                 <TextareaAutosize
                   aria-label="minimum height"
                   rowsMin={4}
-                  placeholder="Minimum 3 rows"
+                  placeholder="Agrega una descripcion de la propiedad"
                   style={{ width: "94%", marginBottom: 10 }}
                 />
                 <Button

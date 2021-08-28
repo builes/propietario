@@ -2,7 +2,6 @@
 import React from "react";
 import VideoPlayer from "react-video-js-player";
 import inmueble1 from "./inmueble1.mp4";
-import inmueble2 from "./inmueble2.mp4";
 import { makeStyles } from "@material-ui/core";
 import { ClassNames } from "@emotion/react";
 

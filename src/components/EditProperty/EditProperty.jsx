@@ -17,6 +17,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { store } from "../../firebase/firebaseFirestore";
+import { Link } from "react-router-dom";
 
 export default function EdittProperty() {
   const [inmuebles, setInmuebles] = useState([]);
@@ -78,9 +79,18 @@ export default function EdittProperty() {
           padding: 10,
         }}
       >
-        <Grid item xs={12}>
+        <Grid item xs={4}>
           <div style={{ marginBottom: 20 }}>
             <ModalAddProperty />
+          </div>
+        </Grid>
+        <Grid item xs={4}>
+          <div style={{ marginBottom: 20 }}>
+            <Button variant="contained" size="large">
+              <Link to="pago" style={{ textDecoration: "none" }}>
+                Convertirse en premium
+              </Link>
+            </Button>
           </div>
         </Grid>
         <Grid item xs={12}>
@@ -93,12 +103,28 @@ export default function EdittProperty() {
                     <Box display="flex" justifyContent="flex-end">
                       <Button
                         variant="contained"
+                        color="suscess"
+                        style={{
+                          backgroundColor: "#81c784",
+                          marginRight: "15px",
+                        }}
+                      >
+                        <Link
+                          to="inquilino"
+                          style={{ color: "white", textDecoration: "none" }}
+                        >
+                          Arrendada
+                        </Link>
+                      </Button>
+                      <Button
+                        variant="contained"
                         color="secondary"
                         onClick={(id) => {
                           deleteInmueble(inmueble.id);
                         }}
+                        style={{ marginRight: "15px" }}
                       >
-                        Delete
+                        Borrar
                       </Button>
                       <Button
                         variant="contained"
@@ -107,7 +133,7 @@ export default function EdittProperty() {
                           updateInmueble(inmueble.id);
                         }}
                       >
-                        Update
+                        Actualizar
                       </Button>
                     </Box>
                     <Divider />
