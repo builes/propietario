@@ -40,11 +40,6 @@ export default function Inicio() {
           </Typography>
           <SearchInmueble />
           <Button style={{ marginTop: "1.2em" }}>Busqueda avanzada</Button>
-          <Link to="/">
-            <Typography className={classes.text}>
-              Publica gratis tu propiedad con DreamHouse
-            </Typography>
-          </Link>
         </Grid>
       </Grid>
     </div>

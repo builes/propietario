@@ -55,6 +55,14 @@ export default function Inquilino() {
           <h6>Apellidos</h6>
           <p>Rios Zapata</p>
         </div>
+        <div style={{ width: "50%", marginTop: -25 }}>
+          <h6>Telefono</h6>
+          <p>3205689876</p>
+        </div>
+        <div style={{ width: "50%", marginTop: -25 }}>
+          <h6>Cedula</h6>
+          <p>1.056.894.534</p>
+        </div>
         <div style={{ width: "50%", marginTop: -40 }}>
           <h6>Correo</h6>
           <p>luisa@gmail.com</p>

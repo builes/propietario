@@ -60,6 +60,14 @@ export default function Cuenta() {
             <h6>Contraseña</h6>
             <p>*******</p>
           </div>
+          <div className={classes.elementos}>
+            <h6>Cedula</h6>
+            <p>1.088.456.896</p>
+          </div>
+          <div className={classes.elementos}>
+            <h6>Telefono</h6>
+            <p>3008553265</p>
+          </div>
         </div>
 
         <Button variant="contained" color="primary" size="large">

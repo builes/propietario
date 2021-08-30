@@ -15,6 +15,10 @@ import {
 } from "@material-ui/core";
 import { store } from "../../firebase/firebaseFirestore";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormLabel from "@material-ui/core/FormLabel";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -62,6 +66,12 @@ export default function TransitionsModal() {
   const [piso, setPiso] = useState("");
   const [nombreUnidad, setnomberUnidad] = useState("");
   const [fotos, setFotos] = useState([]);
+
+  const [value, setValue] = React.useState("female");
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
 
   //estados de cada input para verificar que si se haya escrito algo
   const [errorId, setErrorId] = useState({
@@ -452,6 +462,28 @@ export default function TransitionsModal() {
                     name="asdasd"
                   />
                 </div>
+                <FormControl component="fieldset">
+                  <FormLabel component="legend">
+                    Desea publicar la propiedad ya
+                  </FormLabel>
+                  <RadioGroup
+                    aria-label="gender"
+                    name="gender1"
+                    value={value}
+                    onChange={handleChange}
+                  >
+                    <FormControlLabel
+                      value="female"
+                      control={<Radio />}
+                      label="Si"
+                    />
+                    <FormControlLabel
+                      value="male"
+                      control={<Radio />}
+                      label="No"
+                    />
+                  </RadioGroup>
+                </FormControl>
                 <TextareaAutosize
                   aria-label="minimum height"
                   rowsMin={4}

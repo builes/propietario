@@ -153,33 +153,6 @@ export default function Inmueble() {
       </Grid>
       <Grid item xs={7} style={{ position: "relative" }}>
         <Card className={classes.cardAbsolute}>
-          <div>
-            {color ? (
-              <IconButton aria-label="add to favorites">
-                <FavoriteIcon
-                  id="favorite"
-                  style={{ fontSize: "40px", color: "#ffa726" }}
-                  onClick={() => setColor(!color)}
-                />
-              </IconButton>
-            ) : (
-              <IconButton aria-label="add to favorites">
-                <FavoriteIcon
-                  id="favorite"
-                  style={{ fontSize: "40px" }}
-                  onClick={() => setColor(!color)}
-                />
-              </IconButton>
-            )}
-          </div>
-          <Button
-            className={classes.cardInnerMargin}
-            size="large"
-            variant="contained"
-            color="primary"
-          >
-            Agendar visita
-          </Button>
           <Button
             className={classes.cardInnerMargin}
             size="large"
@@ -187,25 +160,7 @@ export default function Inmueble() {
             color="primary"
           >
             <Link
-              to="/pagoArriendo/"
-              style={{
-                textDecoration: "none",
-                color: "white",
-                paddingLeft: 21,
-                paddingRight: 21,
-              }}
-            >
-              Arrendar
-            </Link>
-          </Button>
-          <Button
-            className={classes.cardInnerMargin}
-            size="large"
-            variant="contained"
-            color="primary"
-          >
-            <Link
-              to="/pagoArriendo/"
+              to="#"
               style={{
                 textDecoration: "none",
                 color: "white",
